@@ -11,7 +11,7 @@ const FLY_SPEED = 20
 
 var gravity = -9.8 * 3
 const MAX_SPEED = 20
-const MAX_RUNNING_SPEED = 40
+const MAX_RUNNING_SPEED = 5
 const ACCEL = 2
 const DEACCEL = 6
 
@@ -90,7 +90,7 @@ func walk(delta):
 	temp_vel.y = 0
 	
 	var speed
-	if Input.is_action_just_pressed("move_sprint"):
+	if Input.is_action_pressed("sprint"):
 		speed = MAX_RUNNING_SPEED
 	else:
 		speed = MAX_SPEED
