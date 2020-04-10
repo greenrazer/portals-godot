@@ -8,7 +8,7 @@ func _ready():
 	matA.set_shader_param("texture_albedo", texA)
 	$Viewport.size = get_viewport().size
 	
-	player_cam = get_node("../../../../Steve/Head/Camera")
+	player_cam = get_node("../../../Steve/Head/Camera")
 
 func update_view(linked_portal):
 	var linked_trans = linked_portal.global_transform * global_transform.inverse() * player_cam.global_transform
