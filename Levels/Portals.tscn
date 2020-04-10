@@ -260,19 +260,21 @@ cull_mask = 1048569
 current = true
 
 [node name="Shape" type="Spatial" parent="Portals/PortalPair1/PortalA"]
-transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 0, 0 )
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.05, 0, 0, 0 )
 
 [node name="Mesh" type="Spatial" parent="Portals/PortalPair1/PortalA/Shape"]
 
 [node name="Inside" type="MeshInstance" parent="Portals/PortalPair1/PortalA/Shape/Mesh"]
 layers = 2
 material_override = SubResource( 9 )
+cast_shadow = 0
 mesh = SubResource( 10 )
 material/0 = null
 
 [node name="Outside" type="MeshInstance" parent="Portals/PortalPair1/PortalA/Shape/Mesh"]
 layers = 2
 material_override = SubResource( 9 )
+cast_shadow = 0
 mesh = SubResource( 11 )
 material/0 = null
 
@@ -280,6 +282,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999, 0 )
 layers = 2
 material_override = SubResource( 9 )
+cast_shadow = 0
 mesh = SubResource( 12 )
 material/0 = null
 
@@ -302,19 +305,21 @@ cull_mask = 1048569
 current = true
 
 [node name="Shape" type="Spatial" parent="Portals/PortalPair1/PortalB"]
-transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 0, 0 )
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.05, 0, 0, 0 )
 
 [node name="Mesh" type="Spatial" parent="Portals/PortalPair1/PortalB/Shape"]
 
 [node name="Inside" type="MeshInstance" parent="Portals/PortalPair1/PortalB/Shape/Mesh"]
 layers = 4
 material_override = SubResource( 15 )
+cast_shadow = 0
 mesh = SubResource( 16 )
 material/0 = null
 
 [node name="Outside" type="MeshInstance" parent="Portals/PortalPair1/PortalB/Shape/Mesh"]
 layers = 4
 material_override = SubResource( 15 )
+cast_shadow = 0
 mesh = SubResource( 17 )
 material/0 = null
 
@@ -322,6 +327,7 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999, 0 )
 layers = 4
 material_override = SubResource( 15 )
+cast_shadow = 0
 mesh = SubResource( 18 )
 material/0 = null
 
@@ -329,3 +335,7 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair1/PortalB/Shape/Area"]
 shape = SubResource( 8 )
+[connection signal="body_entered" from="Portals/PortalPair1/PortalA/Shape/Area" to="Portals/PortalPair1/PortalA" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair1/PortalA/Shape/Area" to="Portals/PortalPair1/PortalA" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair1/PortalB/Shape/Area" to="Portals/PortalPair1/PortalB" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair1/PortalB/Shape/Area" to="Portals/PortalPair1/PortalB" method="_on_Area_body_exited"]

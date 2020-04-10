@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody",
+"class": "PortalTraveler",
+"language": "GDScript",
+"path": "res://scripts/portal_traveler.gd"
+} ]
 _global_script_class_icons={
-
+"PortalTraveler": ""
 }
 
 [application]
@@ -21,6 +26,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Constants="*res://scripts/constants.gd"
+Global="*res://scripts/global.gd"
 
 [input]
 

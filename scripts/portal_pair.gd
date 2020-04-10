@@ -1,5 +1,5 @@
 extends Node
 
-func _process(_delta):
-	$PortalA.update_view($PortalB)
-	$PortalB.update_view($PortalA)
+func _ready():
+	$PortalA.set_linked_portal($PortalB)
+	$PortalB.set_linked_portal($PortalA)

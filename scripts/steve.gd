@@ -1,4 +1,4 @@
-extends KinematicBody
+extends PortalTraveler
 
 var camera_angle = 0
 var mouse_sensitivity = 0.005
