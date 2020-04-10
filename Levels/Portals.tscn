@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/steve.gd" type="Script" id=2]
-[ext_resource path="res://scripts/portal.gd" type="Script" id=3]
+[ext_resource path="res://scripts/portal_pair.gd" type="Script" id=3]
 [ext_resource path="res://shaders/viewport_render.shader" type="Shader" id=4]
 
 [sub_resource type="BoxShape" id=1]
@@ -23,21 +23,29 @@ material = SubResource( 4 )
 
 [sub_resource type="CubeMesh" id=7]
 
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 4 )
+
+[sub_resource type="CubeMesh" id=10]
+flip_faces = true
+
+[sub_resource type="CubeMesh" id=11]
+
+[sub_resource type="PlaneMesh" id=12]
+
 [sub_resource type="BoxShape" id=8]
 
 [sub_resource type="ShaderMaterial" id=15]
 shader = ExtResource( 4 )
 
-[sub_resource type="CubeMesh" id=11]
+[sub_resource type="CubeMesh" id=16]
 flip_faces = true
 
-[sub_resource type="CubeMesh" id=16]
+[sub_resource type="CubeMesh" id=17]
 
-[sub_resource type="PlaneMesh" id=17]
+[sub_resource type="PlaneMesh" id=18]
 
-[sub_resource type="CubeMesh" id=12]
-
-[sub_resource type="CapsuleShape" id=13]
+[sub_resource type="CapsuleShape" id=14]
 radius = 0.6
 
 [node name="Main" type="Spatial"]
@@ -96,53 +104,80 @@ material/0 = null
 [node name="Portals" type="Spatial" parent="Scene"]
 
 [node name="PortalPair1" type="Spatial" parent="Scene/Portals"]
-
-[node name="Portal1" type="Spatial" parent="Scene/Portals/PortalPair1"]
-transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.1, -10.666, 2, 9.00788 )
 script = ExtResource( 3 )
 
-[node name="Area" type="Area" parent="Scene/Portals/PortalPair1/Portal1"]
+[node name="PortalA" type="Spatial" parent="Scene/Portals/PortalPair1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.666, 2, 9.00788 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Scene/Portals/PortalPair1/Portal1/Area"]
-shape = SubResource( 8 )
-
-[node name="Viewport" type="Viewport" parent="Scene/Portals/PortalPair1/Portal1"]
+[node name="Viewport" type="Viewport" parent="Scene/Portals/PortalPair1/PortalA"]
 keep_3d_linear = true
 
-[node name="Camera" type="Camera" parent="Scene/Portals/PortalPair1/Portal1/Viewport"]
+[node name="Camera" type="Camera" parent="Scene/Portals/PortalPair1/PortalA/Viewport"]
 transform = Transform( -0.557333, -0.186473, 0.809079, -0.105783, 0.98246, 0.153564, -0.823523, 6.13572e-09, -0.567283, -10.666, 2.85573, 11.8936 )
 current = true
 
-[node name="Mesh" type="Spatial" parent="Scene/Portals/PortalPair1/Portal1"]
+[node name="Shape" type="Spatial" parent="Scene/Portals/PortalPair1/PortalA"]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 0, 0 )
 
-[node name="Inside" type="MeshInstance" parent="Scene/Portals/PortalPair1/Portal1/Mesh"]
-material_override = SubResource( 15 )
+[node name="Mesh" type="Spatial" parent="Scene/Portals/PortalPair1/PortalA/Shape"]
+
+[node name="Inside" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalA/Shape/Mesh"]
+material_override = SubResource( 9 )
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="Outside" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalA/Shape/Mesh"]
+material_override = SubResource( 9 )
 mesh = SubResource( 11 )
 material/0 = null
 
-[node name="Outside" type="MeshInstance" parent="Scene/Portals/PortalPair1/Portal1/Mesh"]
+[node name="InsideFloor" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalA/Shape/Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999, 0 )
+material_override = SubResource( 9 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="Area" type="Area" parent="Scene/Portals/PortalPair1/PortalA/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene/Portals/PortalPair1/PortalA/Shape/Area"]
+shape = SubResource( 8 )
+
+[node name="PortalB" type="Spatial" parent="Scene/Portals/PortalPair1"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8.3419, 2, -12.9615 )
 visible = false
+
+[node name="Viewport" type="Viewport" parent="Scene/Portals/PortalPair1/PortalB"]
+keep_3d_linear = true
+
+[node name="Camera" type="Camera" parent="Scene/Portals/PortalPair1/PortalB/Viewport"]
+transform = Transform( -0.557333, -0.186473, 0.809079, -0.105783, 0.98246, 0.153564, -0.823523, 6.13572e-09, -0.567283, -10.666, 2.85573, 11.8936 )
+current = true
+
+[node name="Shape" type="Spatial" parent="Scene/Portals/PortalPair1/PortalB"]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 0, 0 )
+
+[node name="Mesh" type="Spatial" parent="Scene/Portals/PortalPair1/PortalB/Shape"]
+
+[node name="Inside" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalB/Shape/Mesh"]
 material_override = SubResource( 15 )
 mesh = SubResource( 16 )
 material/0 = null
 
-[node name="InsideFloor" type="MeshInstance" parent="Scene/Portals/PortalPair1/Portal1/Mesh"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999, 0 )
+[node name="Outside" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalB/Shape/Mesh"]
 material_override = SubResource( 15 )
 mesh = SubResource( 17 )
 material/0 = null
 
-[node name="Portal2" type="Spatial" parent="Scene/Portals/PortalPair1"]
-transform = Transform( -0.996457, 0, 0.0747462, 0, 2, 0, -1.12119, 0, -0.0664305, 13.5138, 2, -9.6498 )
-
-[node name="Area" type="Area" parent="Scene/Portals/PortalPair1/Portal2"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Scene/Portals/PortalPair1/Portal2/Area"]
-shape = SubResource( 8 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Scene/Portals/PortalPair1/Portal2/Area/CollisionShape"]
-mesh = SubResource( 12 )
+[node name="InsideFloor" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalB/Shape/Mesh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999, 0 )
+material_override = SubResource( 15 )
+mesh = SubResource( 18 )
 material/0 = null
+
+[node name="Area" type="Area" parent="Scene/Portals/PortalPair1/PortalB/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Scene/Portals/PortalPair1/PortalB/Shape/Area"]
+shape = SubResource( 8 )
 
 [node name="Steve" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54277, 4.30587, 20.7111 )
@@ -150,7 +185,7 @@ script = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape" parent="Steve"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="Head" type="Spatial" parent="Steve"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.463354, 0 )

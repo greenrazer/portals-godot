@@ -3,10 +3,10 @@ extends Node
 var player_cam
 
 func _ready():
-	var texA = $PortalA/Viewport.get_texture()
-	var matB = $PortalB/Shape/Mesh/Outside.material_override
-	matB.set_shader_param("texture_albedo", texA)
-	$PortalA/Viewport.size = get_viewport().size
+#	var texA = $PortalA/Viewport.get_texture()
+#	var matB = $PortalB/Shape/Mesh/Outside.material_override
+#	matB.set_shader_param("texture_albedo", texA)
+#	$PortalA/Viewport.size = get_viewport().size
 
 	var texB = $PortalB/Viewport.get_texture()
 	var matA = $PortalA/Shape/Mesh/Outside.material_override
