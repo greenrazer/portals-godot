@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/steve.gd" type="Script" id=2]
@@ -46,6 +46,9 @@ flip_faces = true
 [sub_resource type="PlaneMesh" id=18]
 
 [sub_resource type="CapsuleShape" id=14]
+radius = 0.6
+
+[sub_resource type="CapsuleMesh" id=19]
 radius = 0.6
 
 [node name="Main" type="Spatial"]
@@ -107,13 +110,14 @@ material/0 = null
 script = ExtResource( 3 )
 
 [node name="PortalA" type="Spatial" parent="Scene/Portals/PortalPair1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.666, 2, 9.00788 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.666, 2, 3.37379 )
 
 [node name="Viewport" type="Viewport" parent="Scene/Portals/PortalPair1/PortalA"]
 keep_3d_linear = true
 
 [node name="Camera" type="Camera" parent="Scene/Portals/PortalPair1/PortalA/Viewport"]
-transform = Transform( -0.557333, -0.186473, 0.809079, -0.105783, 0.98246, 0.153564, -0.823523, 6.13572e-09, -0.567283, -10.666, 2.85573, 11.8936 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+cull_mask = 1048573
 current = true
 
 [node name="Shape" type="Spatial" parent="Scene/Portals/PortalPair1/PortalA"]
@@ -122,17 +126,20 @@ transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 0, 0 )
 [node name="Mesh" type="Spatial" parent="Scene/Portals/PortalPair1/PortalA/Shape"]
 
 [node name="Inside" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalA/Shape/Mesh"]
+layers = 2
 material_override = SubResource( 9 )
 mesh = SubResource( 10 )
 material/0 = null
 
 [node name="Outside" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalA/Shape/Mesh"]
+layers = 2
 material_override = SubResource( 9 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="InsideFloor" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalA/Shape/Mesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999, 0 )
+layers = 2
 material_override = SubResource( 9 )
 mesh = SubResource( 12 )
 material/0 = null
@@ -144,13 +151,13 @@ shape = SubResource( 8 )
 
 [node name="PortalB" type="Spatial" parent="Scene/Portals/PortalPair1"]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8.3419, 2, -12.9615 )
-visible = false
 
 [node name="Viewport" type="Viewport" parent="Scene/Portals/PortalPair1/PortalB"]
 keep_3d_linear = true
 
 [node name="Camera" type="Camera" parent="Scene/Portals/PortalPair1/PortalB/Viewport"]
-transform = Transform( -0.557333, -0.186473, 0.809079, -0.105783, 0.98246, 0.153564, -0.823523, 6.13572e-09, -0.567283, -10.666, 2.85573, 11.8936 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+cull_mask = 1048571
 current = true
 
 [node name="Shape" type="Spatial" parent="Scene/Portals/PortalPair1/PortalB"]
@@ -159,17 +166,20 @@ transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 0, 0 )
 [node name="Mesh" type="Spatial" parent="Scene/Portals/PortalPair1/PortalB/Shape"]
 
 [node name="Inside" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalB/Shape/Mesh"]
+layers = 4
 material_override = SubResource( 15 )
 mesh = SubResource( 16 )
 material/0 = null
 
 [node name="Outside" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalB/Shape/Mesh"]
+layers = 4
 material_override = SubResource( 15 )
 mesh = SubResource( 17 )
 material/0 = null
 
 [node name="InsideFloor" type="MeshInstance" parent="Scene/Portals/PortalPair1/PortalB/Shape/Mesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.999, 0 )
+layers = 4
 material_override = SubResource( 15 )
 mesh = SubResource( 18 )
 material/0 = null
@@ -186,6 +196,10 @@ script = ExtResource( 2 )
 [node name="Collider" type="CollisionShape" parent="Steve"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 14 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Steve/Collider"]
+mesh = SubResource( 19 )
+material/0 = null
 
 [node name="Head" type="Spatial" parent="Steve"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.463354, 0 )
