@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/steve.gd" type="Script" id=2]
 [ext_resource path="res://scripts/portal_pair.gd" type="Script" id=3]
 [ext_resource path="res://shaders/viewport_render.shader" type="Shader" id=4]
+[ext_resource path="res://scripts/portal.gd" type="Script" id=5]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -111,13 +112,14 @@ script = ExtResource( 3 )
 
 [node name="PortalA" type="Spatial" parent="Scene/Portals/PortalPair1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.666, 2, 3.37379 )
+script = ExtResource( 5 )
 
 [node name="Viewport" type="Viewport" parent="Scene/Portals/PortalPair1/PortalA"]
 keep_3d_linear = true
 
 [node name="Camera" type="Camera" parent="Scene/Portals/PortalPair1/PortalA/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-cull_mask = 1048573
+cull_mask = 1048569
 current = true
 
 [node name="Shape" type="Spatial" parent="Scene/Portals/PortalPair1/PortalA"]
@@ -151,13 +153,14 @@ shape = SubResource( 8 )
 
 [node name="PortalB" type="Spatial" parent="Scene/Portals/PortalPair1"]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8.3419, 2, -12.9615 )
+script = ExtResource( 5 )
 
 [node name="Viewport" type="Viewport" parent="Scene/Portals/PortalPair1/PortalB"]
 keep_3d_linear = true
 
 [node name="Camera" type="Camera" parent="Scene/Portals/PortalPair1/PortalB/Viewport"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-cull_mask = 1048571
+cull_mask = 1048569
 current = true
 
 [node name="Shape" type="Spatial" parent="Scene/Portals/PortalPair1/PortalB"]
