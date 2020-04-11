@@ -35,12 +35,9 @@ func teleport_travelers():
 		var new_side = sign(offset.dot(global_transform.basis.z))
 		
 		if old_side != new_side:
-			var linked_trans = linked_portal.global_transform * global_transform.inverse() * traveler.global_transform
-			traveler.set_global_transform(linked_trans)
-			print(traveler.velocity)
-#			traveler.velocity = linked_trans.basis * traveler.velocity
-			traveler.velocity = -traveler.velocity
-			print(traveler.velocity)
+			var to_linked_portal = linked_portal.global_transform * global_transform.inverse()
+			traveler.global_transform = to_linked_portal * traveler.global_transform
+			traveler.velocity = to_linked_portal.basis * traveler.velocity
 			travelers_to_me.erase(traveler)
 		traveler.prev_offset = offset
 
