@@ -7,7 +7,7 @@ var just_started
 
 func _ready():
 	var texA = $Viewport.get_texture()
-	var matA = $Shape/Mesh/Outside.material_override
+	var matA = $Shape/Outside.material_override
 	matA.set_shader_param("texture_albedo", texA)
 	$Viewport.size = get_viewport().size
 	
