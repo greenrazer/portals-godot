@@ -1,5 +1,7 @@
 extends Spatial
 
+const NEAR_CLIPPING_PLANE_OFFSET = 1
+
 var player_cam
 var linked_portal
 var travelers_to_me
@@ -24,7 +26,7 @@ func update_portal_view():
 	var linked_trans = linked_portal.global_transform * global_transform.inverse() * player_cam.global_transform
 	var camera_to_linked_portal_dist = (player_cam.global_transform.origin - global_transform.origin).length()
 	$Viewport/Camera.set_global_transform(linked_trans)
-	$Viewport/Camera.set_znear(clamp(camera_to_linked_portal_dist - 1,0.01,INF))
+	$Viewport/Camera.set_znear(clamp(camera_to_linked_portal_dist - NEAR_CLIPPING_PLANE_OFFSET,0.01,INF))
 	$Viewport.size = get_viewport().size
 
 func teleport_travelers():
@@ -44,7 +46,8 @@ func teleport_travelers():
 func _process(delta):
 	if not linked_portal:
 		return
-	update_portal_view()
+	if $Shape/VisibilityNotifier.is_on_screen():
+		update_portal_view()
 	teleport_travelers()
 
 

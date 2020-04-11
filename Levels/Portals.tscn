@@ -205,7 +205,7 @@ mesh = SubResource( 21 )
 material/0 = null
 
 [node name="Steve" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54277, 4.30587, 20.7111 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54277, 1.3673, 20.7111 )
 script = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape" parent="Steve"]
@@ -221,6 +221,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.463354, 0 )
 
 [node name="Camera" type="Camera" parent="Steve/Head"]
 current = true
+near = 0.01
 
 [node name="DownRay" type="RayCast" parent="Steve"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.662256, 0 )
@@ -265,6 +266,8 @@ cast_shadow = 0
 mesh = SubResource( 11 )
 material/0 = null
 
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair1/PortalA/Shape"]
+
 [node name="PortalB" type="Spatial" parent="Portals/PortalPair1"]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8.3419, 2, -12.9615 )
 script = ExtResource( 5 )
@@ -293,6 +296,9 @@ material_override = SubResource( 15 )
 cast_shadow = 0
 mesh = SubResource( 17 )
 material/0 = null
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair1/PortalB/Shape"]
+transform = Transform( 1, 0, 4.44089e-16, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 [connection signal="body_entered" from="Portals/PortalPair1/PortalA/Shape/Area" to="Portals/PortalPair1/PortalA" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Portals/PortalPair1/PortalA/Shape/Area" to="Portals/PortalPair1/PortalA" method="_on_Area_body_exited"]
 [connection signal="body_entered" from="Portals/PortalPair1/PortalB/Shape/Area" to="Portals/PortalPair1/PortalB" method="_on_Area_body_entered"]
