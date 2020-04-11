@@ -1,6 +1,7 @@
 extends Spatial
 
 const NEAR_CLIPPING_PLANE_OFFSET = 1
+const RECURSIONS = 3
 
 var player_cam
 var linked_portal
@@ -18,15 +19,38 @@ func _ready():
 	travelers_to_me = []
 	intersecting_static_bodies = []
 
+func render():
+	var texA = $Viewport.get_texture()
+	var matA = $Shape/Outside.material_override
+	matA.set_shader_param("texture_albedo", texA)
+	$Viewport.size = get_viewport().size
+
 func set_linked_portal(linked):
 	linked_portal = linked
 
 func update_portal_view():
-	var linked_trans = linked_portal.global_transform * global_transform.inverse() * player_cam.global_transform
-	var camera_to_linked_portal_dist = (player_cam.global_transform.origin - global_transform.origin).length()
-	$Viewport/Camera.set_global_transform(linked_trans)
-	$Viewport/Camera.set_znear(clamp(camera_to_linked_portal_dist - NEAR_CLIPPING_PLANE_OFFSET,0.01,INF))
-	$Viewport.size = get_viewport().size
+	
+	var portal_trans = linked_portal.global_transform * global_transform.inverse()
+	var trans = player_cam.global_transform
+	var transformations = []
+	
+	for i in range(RECURSIONS):
+		trans = portal_trans * trans
+		transformations.push_front(trans)
+		
+	for trans in transformations:
+		var camera_to_linked_portal_dist = (player_cam.global_transform.origin - global_transform.origin).length()
+		$Viewport/Camera.set_global_transform(trans)
+#		$Viewport/Camera.set_znear(clamp(camera_to_linked_portal_dist - NEAR_CLIPPING_PLANE_OFFSET,0.01,INF))
+		render()
+	
+	
+	
+#	var linked_trans = linked_portal.global_transform * global_transform.inverse() * player_cam.global_transform
+#	var camera_to_linked_portal_dist = (player_cam.global_transform.origin - global_transform.origin).length()
+#	$Viewport/Camera.set_global_transform(linked_trans)
+#	$Viewport/Camera.set_znear(clamp(camera_to_linked_portal_dist - NEAR_CLIPPING_PLANE_OFFSET,0.01,INF))
+#	$Viewport.size = get_viewport().size
 
 func teleport_travelers():
 	for traveler in travelers_to_me:
