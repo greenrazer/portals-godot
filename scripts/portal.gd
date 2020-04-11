@@ -24,13 +24,12 @@ func update_portal_view():
 	var linked_trans = linked_portal.global_transform * global_transform.inverse() * player_cam.global_transform
 	var camera_to_linked_portal_dist = (player_cam.global_transform.origin - global_transform.origin).length()
 	$Viewport/Camera.set_global_transform(linked_trans)
-	$Viewport/Camera.set_znear(camera_to_linked_portal_dist)
+	$Viewport/Camera.set_znear(clamp(camera_to_linked_portal_dist - 1,0.01,INF))
 	$Viewport.size = get_viewport().size
 
 func teleport_travelers():
 	for traveler in travelers_to_me:
-		var trans = traveler.global_transform
-		var offset = trans.origin - global_transform.origin
+		var offset = traveler.global_transform.origin - global_transform.origin
 		
 		var old_side = sign(traveler.prev_offset.dot(global_transform.basis.z))
 		var new_side = sign(offset.dot(global_transform.basis.z))
@@ -38,7 +37,10 @@ func teleport_travelers():
 		if old_side != new_side:
 			var linked_trans = linked_portal.global_transform * global_transform.inverse() * traveler.global_transform
 			traveler.set_global_transform(linked_trans)
-			traveler.velocity = linked_trans.basis * traveler.velocity
+			print(traveler.velocity)
+#			traveler.velocity = linked_trans.basis * traveler.velocity
+			traveler.velocity = -traveler.velocity
+			print(traveler.velocity)
 			travelers_to_me.erase(traveler)
 		traveler.prev_offset = offset
 

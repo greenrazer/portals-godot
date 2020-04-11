@@ -250,7 +250,7 @@ cull_mask = 1048569
 current = true
 
 [node name="Shape" type="Spatial" parent="Portals/PortalPair1/PortalA"]
-transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.05, 0, 0, 0 )
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
 
 [node name="Area" type="Area" parent="Portals/PortalPair1/PortalA/Shape"]
 
@@ -258,7 +258,7 @@ transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.05, 0, 0, 0 )
 shape = SubResource( 8 )
 
 [node name="Outside" type="MeshInstance" parent="Portals/PortalPair1/PortalA/Shape"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
 layers = 2
 material_override = SubResource( 9 )
 cast_shadow = 0
@@ -279,7 +279,7 @@ cull_mask = 1048569
 current = true
 
 [node name="Shape" type="Spatial" parent="Portals/PortalPair1/PortalB"]
-transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.05, 0, 0, 0 )
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
 
 [node name="Area" type="Area" parent="Portals/PortalPair1/PortalB/Shape"]
 
@@ -287,7 +287,7 @@ transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.05, 0, 0, 0 )
 shape = SubResource( 8 )
 
 [node name="Outside" type="MeshInstance" parent="Portals/PortalPair1/PortalB/Shape"]
-transform = Transform( 1, 0, 8.88178e-16, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
 layers = 4
 material_override = SubResource( 15 )
 cast_shadow = 0

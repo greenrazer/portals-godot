@@ -5,6 +5,7 @@ var mouse_sensitivity = 0.005
 var camera_change = Vector2()
 
 var velocity = Vector3()
+var direction = Vector3()
 
 const FLY_ACCEL = 4
 const FLY_SPEED = 20
@@ -55,7 +56,7 @@ func fly(delta):
 	move_and_slide(velocity)
 
 func walk(delta):
-	var direction = Vector3()
+	direction = Vector3()
 	
 	var aim = $Head/Camera.get_global_transform().basis
 	if Input.is_action_pressed("move_up"):
