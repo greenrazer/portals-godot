@@ -5,7 +5,7 @@ const NEAR_CLIPPING_PLANE_OFFSET = 1
 var player_cam
 var linked_portal
 var travelers_to_me
-var just_started
+var intersecting_static_bodies
 
 func _ready():
 	var texA = $Viewport.get_texture()
@@ -16,8 +16,7 @@ func _ready():
 	player_cam = get_node("../../../Steve/Head/Camera")
 	
 	travelers_to_me = []
-	
-	just_started = true
+	intersecting_static_bodies = []
 
 func set_linked_portal(linked):
 	linked_portal = linked
@@ -52,16 +51,29 @@ func _process(delta):
 
 
 func _on_Area_body_entered(body):
-	if just_started:
-		just_started = false
-		return
-	
-	if linked_portal and body is PortalTraveler:
-		if(!travelers_to_me.has(body)):
-			body.prev_offset = body.global_transform.origin - global_transform.origin
-			travelers_to_me.append(body)
+	if linked_portal and body is PortalTraveler and !travelers_to_me.has(body):
+		body.prev_offset = body.global_transform.origin - global_transform.origin
+		travelers_to_me.append(body)
 
 
 func _on_Area_body_exited(body):
-	if(travelers_to_me.has(body)):
+	if linked_portal and body is PortalTraveler and travelers_to_me.has(body):
 		travelers_to_me.erase(body)
+
+
+func _on_InPortalArea_body_entered(body):
+	if linked_portal and body is PortalTraveler:
+		body.in_portal_field = true
+		for static_body in intersecting_static_bodies:
+			static_body.get_child(0).disabled = true
+	elif body is StaticBody and !intersecting_static_bodies.has(body):
+		intersecting_static_bodies.append(body)
+
+
+func _on_InPortalArea_body_exited(body):
+	if linked_portal and body is PortalTraveler:
+		body.in_portal_field = false
+		for static_body in intersecting_static_bodies:
+			static_body.get_child(0).disabled = false
+	elif body is StaticBody and body.get_child(0).disabled == false:
+		intersecting_static_bodies.erase(body)

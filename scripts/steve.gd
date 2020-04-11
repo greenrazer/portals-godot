@@ -16,7 +16,11 @@ const DEACCEL = 6
 var jump_height = 15
 var has_contact = false
 
+const RIGHTING_ACCELERATON = 4
+
 const MAX_SLOPE_ANGLE = Constants.QUARTER_PI
+
+var just_disabled = null
 
 func _ready():
 	pass
@@ -24,6 +28,7 @@ func _ready():
 func _physics_process(delta):
 	aim()
 	walk(delta)
+	right(delta)
 
 func _input(event):
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
@@ -31,6 +36,12 @@ func _input(event):
 	
 	if event is InputEventMouseMotion:
 		camera_change = event.relative
+
+func right(delta):
+	var angle = acos(Vector3(0,1,0).dot(transform.basis.y))
+	if angle > 0.05:
+		var axis = Vector3(0,1,0).cross(transform.basis.y).normalized()
+		rotate(axis,-angle*delta*RIGHTING_ACCELERATON)
 
 func fly(delta):
 	var direction = Vector3()

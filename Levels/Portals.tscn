@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/steve.gd" type="Script" id=2]
@@ -24,27 +24,39 @@ material = SubResource( 4 )
 
 [sub_resource type="CubeMesh" id=7]
 
-[sub_resource type="BoxShape" id=20]
-
-[sub_resource type="CubeMesh" id=21]
-
-[sub_resource type="CapsuleShape" id=14]
-radius = 0.6
-
-[sub_resource type="CapsuleMesh" id=19]
-radius = 0.6
-
 [sub_resource type="BoxShape" id=8]
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="CubeMesh" id=9]
+
+[sub_resource type="CapsuleShape" id=10]
+radius = 0.6
+
+[sub_resource type="CapsuleMesh" id=11]
+radius = 0.6
+
+[sub_resource type="BoxShape" id=12]
+
+[sub_resource type="ShaderMaterial" id=13]
 shader = ExtResource( 4 )
 
-[sub_resource type="CubeMesh" id=11]
+[sub_resource type="CubeMesh" id=14]
 
-[sub_resource type="ShaderMaterial" id=15]
+[sub_resource type="BoxShape" id=15]
+
+[sub_resource type="ShaderMaterial" id=16]
 shader = ExtResource( 4 )
 
 [sub_resource type="CubeMesh" id=17]
+
+[sub_resource type="ShaderMaterial" id=18]
+shader = ExtResource( 4 )
+
+[sub_resource type="CubeMesh" id=19]
+
+[sub_resource type="ShaderMaterial" id=20]
+shader = ExtResource( 4 )
+
+[sub_resource type="CubeMesh" id=21]
 
 [sub_resource type="ShaderMaterial" id=22]
 shader = ExtResource( 4 )
@@ -116,11 +128,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6539, 0.6, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/Box/StaticBody"]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/Box/StaticBody/CollisionShape"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Box2" type="Spatial" parent="Scene"]
@@ -130,10 +141,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3004, 0.6, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/Box2/StaticBody"]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/Box2/StaticBody/CollisionShape"]
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Box3" type="Spatial" parent="Scene"]
@@ -143,10 +154,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7931, 0.6, -11.7819 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/Box3/StaticBody"]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/Box3/StaticBody/CollisionShape"]
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Box4" type="Spatial" parent="Scene"]
@@ -156,10 +167,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8661, 0.6, 9.1042 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/Box4/StaticBody"]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/Box4/StaticBody/CollisionShape"]
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Box5" type="Spatial" parent="Scene"]
@@ -169,10 +180,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.05405, 0.6, -20.1363 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/Box5/StaticBody"]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/Box5/StaticBody/CollisionShape"]
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Box6" type="Spatial" parent="Scene"]
@@ -182,10 +193,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.94012, 0.6, 20.8861 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/Box6/StaticBody"]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/Box6/StaticBody/CollisionShape"]
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Box7" type="Spatial" parent="Scene"]
@@ -195,10 +206,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66262, 0.6, -5.67674 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/Box7/StaticBody"]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/Box7/StaticBody/CollisionShape"]
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Box8" type="Spatial" parent="Scene"]
@@ -208,10 +219,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9431, 0.6, -9.42552 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Scene/Box8/StaticBody"]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
-shape = SubResource( 20 )
+shape = SubResource( 8 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Scene/Box8/StaticBody/CollisionShape"]
-mesh = SubResource( 21 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Steve" type="KinematicBody" parent="."]
@@ -220,10 +231,11 @@ script = ExtResource( 2 )
 
 [node name="Collider" type="CollisionShape" parent="Steve"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Steve/Collider"]
-mesh = SubResource( 19 )
+visible = false
+mesh = SubResource( 11 )
 material/0 = null
 
 [node name="Head" type="Spatial" parent="Steve"]
@@ -237,6 +249,16 @@ near = 0.01
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.662256, 0 )
 enabled = true
 
+[node name="DirectionBodyRay" type="RayCast" parent="Steve"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.53674e-07, 0 )
+enabled = true
+cast_to = Vector3( 0, 1, 0 )
+
+[node name="DirectionAreaRay" type="RayCast" parent="Steve"]
+enabled = true
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.562204, -0.424236, -0.709894, 0.765568, -0.0576772, 0.640764, -0.31278, -0.903713, 0.292355, -34.5488, 20.5349, 6.53633 )
 light_color = Color( 1, 0.992157, 0.862745, 1 )
@@ -248,7 +270,7 @@ shadow_enabled = true
 script = ExtResource( 3 )
 
 [node name="PortalA" type="Spatial" parent="Portals/PortalPair1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.666, 2, 3.37379 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.666, 2.5, 3.374 )
 script = ExtResource( 5 )
 
 [node name="Viewport" type="Viewport" parent="Portals/PortalPair1/PortalA"]
@@ -256,30 +278,35 @@ keep_3d_linear = true
 shadow_atlas_size = 4
 
 [node name="Camera" type="Camera" parent="Portals/PortalPair1/PortalA/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-cull_mask = 1048569
+cull_mask = 1048571
 current = true
 
 [node name="Shape" type="Spatial" parent="Portals/PortalPair1/PortalA"]
 transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
 
-[node name="Area" type="Area" parent="Portals/PortalPair1/PortalA/Shape"]
+[node name="PortalScreen" type="Area" parent="Portals/PortalPair1/PortalA/Shape"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair1/PortalA/Shape/Area"]
-shape = SubResource( 8 )
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair1/PortalA/Shape/PortalScreen"]
+shape = SubResource( 12 )
 
 [node name="Outside" type="MeshInstance" parent="Portals/PortalPair1/PortalA/Shape"]
 transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
 layers = 2
-material_override = SubResource( 9 )
+material_override = SubResource( 13 )
 cast_shadow = 0
-mesh = SubResource( 11 )
+mesh = SubResource( 14 )
 material/0 = null
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair1/PortalA/Shape"]
 
+[node name="InPortalArea" type="Area" parent="Portals/PortalPair1/PortalA/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair1/PortalA/Shape/InPortalArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 45, 0, 0, 0 )
+shape = SubResource( 15 )
+
 [node name="PortalB" type="Spatial" parent="Portals/PortalPair1"]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8.3419, 2, -12.9615 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 8.342, 2.5, -12.961 )
 script = ExtResource( 5 )
 
 [node name="Viewport" type="Viewport" parent="Portals/PortalPair1/PortalB"]
@@ -287,28 +314,33 @@ keep_3d_linear = true
 shadow_atlas_size = 4
 
 [node name="Camera" type="Camera" parent="Portals/PortalPair1/PortalB/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-cull_mask = 1048569
+cull_mask = 1048573
 current = true
 
 [node name="Shape" type="Spatial" parent="Portals/PortalPair1/PortalB"]
 transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
 
-[node name="Area" type="Area" parent="Portals/PortalPair1/PortalB/Shape"]
+[node name="PortalScreen" type="Area" parent="Portals/PortalPair1/PortalB/Shape"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair1/PortalB/Shape/Area"]
-shape = SubResource( 8 )
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair1/PortalB/Shape/PortalScreen"]
+shape = SubResource( 12 )
 
 [node name="Outside" type="MeshInstance" parent="Portals/PortalPair1/PortalB/Shape"]
 transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
 layers = 4
-material_override = SubResource( 15 )
+material_override = SubResource( 16 )
 cast_shadow = 0
 mesh = SubResource( 17 )
 material/0 = null
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair1/PortalB/Shape"]
 transform = Transform( 1, 0, 4.44089e-16, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="InPortalArea" type="Area" parent="Portals/PortalPair1/PortalB/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair1/PortalB/Shape/InPortalArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 45, 0, 0, 0 )
+shape = SubResource( 15 )
 
 [node name="PortalPair2" type="Spatial" parent="Portals"]
 script = ExtResource( 3 )
@@ -322,30 +354,35 @@ keep_3d_linear = true
 shadow_atlas_size = 4
 
 [node name="Camera" type="Camera" parent="Portals/PortalPair2/PortalA/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-cull_mask = 1048569
+cull_mask = 1048571
 current = true
 
 [node name="Shape" type="Spatial" parent="Portals/PortalPair2/PortalA"]
 transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
 
-[node name="Area" type="Area" parent="Portals/PortalPair2/PortalA/Shape"]
+[node name="PortalScreen" type="Area" parent="Portals/PortalPair2/PortalA/Shape"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair2/PortalA/Shape/Area"]
-shape = SubResource( 8 )
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair2/PortalA/Shape/PortalScreen"]
+shape = SubResource( 12 )
 
 [node name="Outside" type="MeshInstance" parent="Portals/PortalPair2/PortalA/Shape"]
 transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
 layers = 2
-material_override = SubResource( 22 )
+material_override = SubResource( 18 )
 cast_shadow = 0
-mesh = SubResource( 23 )
+mesh = SubResource( 19 )
 material/0 = null
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair2/PortalA/Shape"]
 
+[node name="InPortalArea" type="Area" parent="Portals/PortalPair2/PortalA/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair2/PortalA/Shape/InPortalArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 45, 0, 0, 0 )
+shape = SubResource( 15 )
+
 [node name="PortalB" type="Spatial" parent="Portals/PortalPair2"]
-transform = Transform( -0.3041, 0, 0.95264, 0, 1, 0, -0.95264, 0, -0.3041, 16.308, 2, 4.91934 )
+transform = Transform( -0.3041, 0, 0.95264, 0, 1, 0, -0.95264, 0, -0.3041, 16.308, 2.5, 4.919 )
 script = ExtResource( 5 )
 
 [node name="Viewport" type="Viewport" parent="Portals/PortalPair2/PortalB"]
@@ -353,19 +390,96 @@ keep_3d_linear = true
 shadow_atlas_size = 4
 
 [node name="Camera" type="Camera" parent="Portals/PortalPair2/PortalB/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-cull_mask = 1048569
+cull_mask = 1048573
 current = true
 
 [node name="Shape" type="Spatial" parent="Portals/PortalPair2/PortalB"]
 transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
 
-[node name="Area" type="Area" parent="Portals/PortalPair2/PortalB/Shape"]
+[node name="PortalScreen" type="Area" parent="Portals/PortalPair2/PortalB/Shape"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair2/PortalB/Shape/Area"]
-shape = SubResource( 8 )
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair2/PortalB/Shape/PortalScreen"]
+shape = SubResource( 12 )
 
 [node name="Outside" type="MeshInstance" parent="Portals/PortalPair2/PortalB/Shape"]
+transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
+layers = 4
+material_override = SubResource( 20 )
+cast_shadow = 0
+mesh = SubResource( 21 )
+material/0 = null
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair2/PortalB/Shape"]
+transform = Transform( 1, 0, 4.44089e-16, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="InPortalArea" type="Area" parent="Portals/PortalPair2/PortalB/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair2/PortalB/Shape/InPortalArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 45, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="PortalPair3" type="Spatial" parent="Portals"]
+script = ExtResource( 3 )
+
+[node name="PortalA" type="Spatial" parent="Portals/PortalPair3"]
+transform = Transform( 0.999995, 0.00173829, 0.00250473, 0.00250442, 0.000185144, -0.999997, -0.00173875, 0.999998, 0.000180804, -18.577, 0, -12.035 )
+script = ExtResource( 5 )
+
+[node name="Viewport" type="Viewport" parent="Portals/PortalPair3/PortalA"]
+keep_3d_linear = true
+shadow_atlas_size = 4
+
+[node name="Camera" type="Camera" parent="Portals/PortalPair3/PortalA/Viewport"]
+cull_mask = 1048571
+current = true
+
+[node name="Shape" type="Spatial" parent="Portals/PortalPair3/PortalA"]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
+
+[node name="PortalScreen" type="Area" parent="Portals/PortalPair3/PortalA/Shape"]
+transform = Transform( 1, 0, 2.61702e-12, -1.16415e-10, 1, 0, 3.35785e-09, -9.31323e-10, 1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair3/PortalA/Shape/PortalScreen"]
+shape = SubResource( 12 )
+
+[node name="Outside" type="MeshInstance" parent="Portals/PortalPair3/PortalA/Shape"]
+transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
+layers = 2
+material_override = SubResource( 22 )
+cast_shadow = 0
+mesh = SubResource( 23 )
+material/0 = null
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair3/PortalA/Shape"]
+
+[node name="InPortalArea" type="Area" parent="Portals/PortalPair3/PortalA/Shape"]
+transform = Transform( 1, 0, 2.61702e-12, -1.16415e-10, 1, 0, 3.35785e-09, -9.31323e-10, 1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair3/PortalA/Shape/InPortalArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 45, 0, 0, 0 )
+shape = SubResource( 15 )
+
+[node name="PortalB" type="Spatial" parent="Portals/PortalPair3"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 8.342, 0, 14.292 )
+script = ExtResource( 5 )
+
+[node name="Viewport" type="Viewport" parent="Portals/PortalPair3/PortalB"]
+keep_3d_linear = true
+shadow_atlas_size = 4
+
+[node name="Camera" type="Camera" parent="Portals/PortalPair3/PortalB/Viewport"]
+cull_mask = 1048573
+current = true
+
+[node name="Shape" type="Spatial" parent="Portals/PortalPair3/PortalB"]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
+
+[node name="PortalScreen" type="Area" parent="Portals/PortalPair3/PortalB/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair3/PortalB/Shape/PortalScreen"]
+shape = SubResource( 12 )
+
+[node name="Outside" type="MeshInstance" parent="Portals/PortalPair3/PortalB/Shape"]
 transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
 layers = 4
 material_override = SubResource( 24 )
@@ -373,13 +487,36 @@ cast_shadow = 0
 mesh = SubResource( 25 )
 material/0 = null
 
-[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair2/PortalB/Shape"]
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair3/PortalB/Shape"]
 transform = Transform( 1, 0, 4.44089e-16, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-[connection signal="body_entered" from="Portals/PortalPair1/PortalA/Shape/Area" to="Portals/PortalPair1/PortalA" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Portals/PortalPair1/PortalA/Shape/Area" to="Portals/PortalPair1/PortalA" method="_on_Area_body_exited"]
-[connection signal="body_entered" from="Portals/PortalPair1/PortalB/Shape/Area" to="Portals/PortalPair1/PortalB" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Portals/PortalPair1/PortalB/Shape/Area" to="Portals/PortalPair1/PortalB" method="_on_Area_body_exited"]
-[connection signal="body_entered" from="Portals/PortalPair2/PortalA/Shape/Area" to="Portals/PortalPair2/PortalA" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Portals/PortalPair2/PortalA/Shape/Area" to="Portals/PortalPair2/PortalA" method="_on_Area_body_exited"]
-[connection signal="body_entered" from="Portals/PortalPair2/PortalB/Shape/Area" to="Portals/PortalPair2/PortalB" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="Portals/PortalPair2/PortalB/Shape/Area" to="Portals/PortalPair2/PortalB" method="_on_Area_body_exited"]
+
+[node name="InPortalArea" type="Area" parent="Portals/PortalPair3/PortalB/Shape"]
+transform = Transform( 1.00781, 0, 0, 0, 1.00008, 0, 0, 0, 0.999997, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair3/PortalB/Shape/InPortalArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 45, 0, 0, 0 )
+shape = SubResource( 15 )
+[connection signal="body_entered" from="Portals/PortalPair1/PortalA/Shape/PortalScreen" to="Portals/PortalPair1/PortalA" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair1/PortalA/Shape/PortalScreen" to="Portals/PortalPair1/PortalA" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair1/PortalA/Shape/InPortalArea" to="Portals/PortalPair1/PortalA" method="_on_InPortalArea_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair1/PortalA/Shape/InPortalArea" to="Portals/PortalPair1/PortalA" method="_on_InPortalArea_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair1/PortalB/Shape/PortalScreen" to="Portals/PortalPair1/PortalB" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair1/PortalB/Shape/PortalScreen" to="Portals/PortalPair1/PortalB" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair1/PortalB/Shape/InPortalArea" to="Portals/PortalPair1/PortalB" method="_on_InPortalArea_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair1/PortalB/Shape/InPortalArea" to="Portals/PortalPair1/PortalB" method="_on_InPortalArea_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair2/PortalA/Shape/PortalScreen" to="Portals/PortalPair2/PortalA" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair2/PortalA/Shape/PortalScreen" to="Portals/PortalPair2/PortalA" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair2/PortalA/Shape/InPortalArea" to="Portals/PortalPair2/PortalA" method="_on_InPortalArea_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair2/PortalA/Shape/InPortalArea" to="Portals/PortalPair2/PortalA" method="_on_InPortalArea_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair2/PortalB/Shape/PortalScreen" to="Portals/PortalPair2/PortalB" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair2/PortalB/Shape/PortalScreen" to="Portals/PortalPair2/PortalB" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair2/PortalB/Shape/InPortalArea" to="Portals/PortalPair2/PortalB" method="_on_InPortalArea_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair2/PortalB/Shape/InPortalArea" to="Portals/PortalPair2/PortalB" method="_on_InPortalArea_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair3/PortalA/Shape/PortalScreen" to="Portals/PortalPair3/PortalA" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair3/PortalA/Shape/PortalScreen" to="Portals/PortalPair3/PortalA" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair3/PortalA/Shape/InPortalArea" to="Portals/PortalPair3/PortalA" method="_on_InPortalArea_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair3/PortalA/Shape/InPortalArea" to="Portals/PortalPair3/PortalA" method="_on_InPortalArea_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair3/PortalB/Shape/PortalScreen" to="Portals/PortalPair3/PortalB" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair3/PortalB/Shape/PortalScreen" to="Portals/PortalPair3/PortalB" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair3/PortalB/Shape/InPortalArea" to="Portals/PortalPair3/PortalB" method="_on_InPortalArea_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair3/PortalB/Shape/InPortalArea" to="Portals/PortalPair3/PortalB" method="_on_InPortalArea_body_exited"]
