@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://scripts/steve.gd" type="Script" id=2]
@@ -45,6 +45,16 @@ shader = ExtResource( 4 )
 shader = ExtResource( 4 )
 
 [sub_resource type="CubeMesh" id=17]
+
+[sub_resource type="ShaderMaterial" id=22]
+shader = ExtResource( 4 )
+
+[sub_resource type="CubeMesh" id=23]
+
+[sub_resource type="ShaderMaterial" id=24]
+shader = ExtResource( 4 )
+
+[sub_resource type="CubeMesh" id=25]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 1 )
@@ -299,7 +309,77 @@ material/0 = null
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair1/PortalB/Shape"]
 transform = Transform( 1, 0, 4.44089e-16, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="PortalPair2" type="Spatial" parent="Portals"]
+script = ExtResource( 3 )
+
+[node name="PortalA" type="Spatial" parent="Portals/PortalPair2"]
+transform = Transform( 0.950646, 0.162669, -0.264218, -0.310278, 0.498393, -0.809525, 0, 0.851553, 0.524268, -10.666, 8.68091, -8.09776 )
+script = ExtResource( 5 )
+
+[node name="Viewport" type="Viewport" parent="Portals/PortalPair2/PortalA"]
+keep_3d_linear = true
+shadow_atlas_size = 4
+
+[node name="Camera" type="Camera" parent="Portals/PortalPair2/PortalA/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+cull_mask = 1048569
+current = true
+
+[node name="Shape" type="Spatial" parent="Portals/PortalPair2/PortalA"]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
+
+[node name="Area" type="Area" parent="Portals/PortalPair2/PortalA/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair2/PortalA/Shape/Area"]
+shape = SubResource( 8 )
+
+[node name="Outside" type="MeshInstance" parent="Portals/PortalPair2/PortalA/Shape"]
+transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
+layers = 2
+material_override = SubResource( 22 )
+cast_shadow = 0
+mesh = SubResource( 23 )
+material/0 = null
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair2/PortalA/Shape"]
+
+[node name="PortalB" type="Spatial" parent="Portals/PortalPair2"]
+transform = Transform( -0.3041, 0, 0.95264, 0, 1, 0, -0.95264, 0, -0.3041, 16.308, 2, 4.91934 )
+script = ExtResource( 5 )
+
+[node name="Viewport" type="Viewport" parent="Portals/PortalPair2/PortalB"]
+keep_3d_linear = true
+shadow_atlas_size = 4
+
+[node name="Camera" type="Camera" parent="Portals/PortalPair2/PortalB/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+cull_mask = 1048569
+current = true
+
+[node name="Shape" type="Spatial" parent="Portals/PortalPair2/PortalB"]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 0.03, 0, 0, 0 )
+
+[node name="Area" type="Area" parent="Portals/PortalPair2/PortalB/Shape"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Portals/PortalPair2/PortalB/Shape/Area"]
+shape = SubResource( 8 )
+
+[node name="Outside" type="MeshInstance" parent="Portals/PortalPair2/PortalB/Shape"]
+transform = Transform( 1, 0, 0, 0, 0.999, 0, 0, 0, 1, 0, 0, 0 )
+layers = 4
+material_override = SubResource( 24 )
+cast_shadow = 0
+mesh = SubResource( 25 )
+material/0 = null
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="Portals/PortalPair2/PortalB/Shape"]
+transform = Transform( 1, 0, 4.44089e-16, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 [connection signal="body_entered" from="Portals/PortalPair1/PortalA/Shape/Area" to="Portals/PortalPair1/PortalA" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Portals/PortalPair1/PortalA/Shape/Area" to="Portals/PortalPair1/PortalA" method="_on_Area_body_exited"]
 [connection signal="body_entered" from="Portals/PortalPair1/PortalB/Shape/Area" to="Portals/PortalPair1/PortalB" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="Portals/PortalPair1/PortalB/Shape/Area" to="Portals/PortalPair1/PortalB" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair2/PortalA/Shape/Area" to="Portals/PortalPair2/PortalA" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair2/PortalA/Shape/Area" to="Portals/PortalPair2/PortalA" method="_on_Area_body_exited"]
+[connection signal="body_entered" from="Portals/PortalPair2/PortalB/Shape/Area" to="Portals/PortalPair2/PortalB" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Portals/PortalPair2/PortalB/Shape/Area" to="Portals/PortalPair2/PortalB" method="_on_Area_body_exited"]
